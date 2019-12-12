@@ -27,9 +27,9 @@ public class ProductoController {
 	}
 	
 	//Obtener producto
-	@GetMapping ("/{codigo}") Optional<Producto> buscar(@PathVariable String codigo) {
+	@GetMapping ("/{codigo}") Producto buscar(@PathVariable String codigo) {
 		
-		return productoRepository.findById(codigo);
+		return productoRepository.findById(codigo).orElseThrow(()-> new RegistroNoEncontradoException());
 	}
 	
 	//Obtener productos
@@ -41,17 +41,17 @@ public class ProductoController {
 	
 	//eliminar producto
 	@DeleteMapping ("/{codigo}")
-	void eliminar(@PathVariable String codigo) {
-		
-		productoRepository.deleteById(codigo);
-
+	Producto eliminar(@PathVariable String codigo){ 
+		return productoRepository.findById(codigo).orElseThrow(()-> new RegistroNoEncontradoException());
 	}
 	
 	//actualizar producto
-	@PutMapping ("/editar")
+	@PutMapping ()
 	public void actualizar( @RequestBody Producto producto) {
 		
-		
+		 productoRepository.findById(producto.getCodigo()).orElseThrow(()-> new RegistroNoEncontradoException());
+		 productoRepository.save(producto);
+	
 	}
 	
 	

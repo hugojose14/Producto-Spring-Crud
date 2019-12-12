@@ -29,8 +29,6 @@ public class ExceptionsHandler {
 		
 	}
 	
-	
-	
 	@ExceptionHandler(RegistroNoEncontradoException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public ErrorCode registroNoEncontrado(RegistroNoEncontradoException e) {
