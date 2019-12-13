@@ -1,13 +1,9 @@
 package com.example.demo.dto;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,15 +11,85 @@ import javax.persistence.Table;
 @Table(name="items")
 public class Item {
 
-    
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-	private float cantidad;
-	private float valor_total;
+	private int cantidad;
+	private Double valor_total;
 	
 	
-	@OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Producto producto;
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Item(long id, int cantidad, Double valor_total, Producto producto) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.valor_total = valor_total;
+		this.producto = producto;
+	}
+
+
+
+
+	public long getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
+
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+
+
+
+	public Double getValor_total() {
+		return valor_total;
+	}
+
+
+
+
+	public void setValor_total(Double valor_total) {
+		this.valor_total = valor_total;
+	}
+
+
+
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+
+
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+
+
+
+	@OneToOne(targetEntity =Producto.class)
+	private Producto producto;
 }
