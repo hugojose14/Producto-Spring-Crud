@@ -7,7 +7,7 @@ import com.example.demo.dto.Producto;
 
 @Repository
 //<Clase, tipo(codigo)>
-public interface ProductoRepository extends JpaRepository <Producto,String>{
+public interface ProductoRepository extends JpaRepository <Producto,Long>{
 	
 	
 	

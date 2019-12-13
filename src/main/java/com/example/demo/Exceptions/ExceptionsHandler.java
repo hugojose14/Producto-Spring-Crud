@@ -42,6 +42,19 @@ public class ExceptionsHandler {
 		
 	}
 	
+	@ExceptionHandler(ValorNoPermitidoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCode ValorNoPermitido(ValorNoPermitidoException e) {
+		// TODO Auto-generated constructor stub
+		ErrorCode ec =new ErrorCode();
+		ec.setCodigo(this.generatedId());
+		ec.setMensaje(e.getMessage());
+		//recibe el errorCode y la exception
+		logError(ec,e );
+		return ec;
+		
+	}
+	
 	private void logError(ErrorCode ec, Exception e) {
 		
 		LOG.severe(ec.getCodigo());
