@@ -3,14 +3,13 @@ package com.example.demo.dominio.services;
 import java.util.List;
 
 import com.example.demo.dominio.model.Producto;
-import com.example.demo.shared.dominio.Codigo;
 import com.example.demo.shared.dominio.Id;
 
 public interface ProductoService {
 
-	public List<Id> buscarPorIds(List <Id> ids);
+	public List<Producto> buscarPorIds( List <Id> id);
 	
-	public void guardar(Producto producto);
+	public Producto guardar(Producto producto);
 	
-	public void buscarPorId(Codigo codigo);
+	public Producto buscarPorId(Id id);
 }

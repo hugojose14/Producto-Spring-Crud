@@ -22,7 +22,7 @@ public class Item extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Item(Long id, int cantidad, Double valor_total, Producto producto) {
+	public Item(Long id, int cantidad, Double valor_total, ProductoDto producto) {
 		super();
 		this.id = id;
 		this.cantidad = cantidad;
@@ -56,11 +56,11 @@ public class Item extends BaseEntity {
 		this.valor_total = valor_total;
 	}
 
-	public Producto getProducto() {
+	public ProductoDto getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(ProductoDto producto) {
 		this.producto = producto;
 	}
 
@@ -75,6 +75,6 @@ public class Item extends BaseEntity {
 
 
 
-	@OneToOne(targetEntity =Producto.class)
-	private Producto producto;
+	@OneToOne(targetEntity =ProductoDto.class)
+	private ProductoDto producto;
 }

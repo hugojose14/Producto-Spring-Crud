@@ -9,4 +9,15 @@ public class Producto {
 	private Id codigo;
 	private Name nombre;
 	private Valor valor;
+	
+	
+	public Id getCodigo() {
+		return codigo;
+	}
+	public Name getNombre() {
+		return nombre;
+	}
+	public Valor getValor() {
+		return valor;
+	}
 }
