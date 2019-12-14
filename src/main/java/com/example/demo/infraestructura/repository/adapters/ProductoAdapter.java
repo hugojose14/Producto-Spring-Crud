@@ -24,17 +24,24 @@ public class ProductoAdapter implements ProductoService{
 	public List<Producto> buscarPorIds(List<Id> id) {
 		return null;
 	}
+	
+	@Override
+	public List<Producto> buscarTodo(){
+		return productoMapper.recibir(productoRepository.findAll());)
+	}
 
 	@Override
-	public void guardar(Producto producto) {
-		productoRepository.save(productoMapper.DomToDto(producto));
-		
+	public Producto guardar(Producto producto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public Producto buscarPorId(Id id) {
-		
+		// TODO Auto-generated method stub
+		return null;
 	}
+
 	
 	
 	
