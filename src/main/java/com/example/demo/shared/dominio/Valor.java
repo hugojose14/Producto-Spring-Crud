@@ -5,10 +5,10 @@ import com.example.demo.Exceptions.ValorNoPermitidoException;
 public class Valor {
 	
 	
-	private final Double value;
+	private final Double valor;
 	public Valor(Double valor) {
 		
-		this.value = valor;
+		this.valor = valor;
 		
 		if(valor < 1.0) {
 			throw new ValorNoPermitidoException();
@@ -19,8 +19,8 @@ public class Valor {
 		}
 		
 	}
-	public Double getValue() {
-		return value;
+	public Double getValor() {
+		return valor;
 	}
 
 	

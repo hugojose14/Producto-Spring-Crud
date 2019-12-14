@@ -4,19 +4,19 @@ import com.example.demo.Exceptions.ValorNoPermitidoException;
 
 public class Name {
 	
-	private final String value;
+	private final String nombre;
 	
-	public Name(String nombreCliente) {
+	public Name(String nombre) {
 		
-		this.value = nombreCliente;
+		this.nombre = nombre;
 		
-		if(nombreCliente.matches("[A-Z]*")) {
+		if(nombre.matches("[A-Z]*")) {
 			throw new ValorNoPermitidoException();
 		}
 	}
 
-	public String getValue() {
-		return value;
+	public String getName() {
+		return nombre;
 	}
 	
 	

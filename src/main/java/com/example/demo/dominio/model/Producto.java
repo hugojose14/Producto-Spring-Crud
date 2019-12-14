@@ -7,22 +7,37 @@ import com.example.demo.shared.dominio.Valor;
 
 public class Producto {
 	
-	private Id codigo;
-	private Name nombre;
-	private Valor valor;
+	private final Id id;
+	private final Codigo codigo;
+	private final Valor valor;
+	private final Name nombre;
 	
+	private Producto(Id id, Codigo codigo, Valor valor, Name nombre) {
 	
-	public Id getCodigo() {
+		this.id = id;
+		this.codigo = codigo;
+		this.valor = valor;
+		this.nombre = nombre;
+	}
+
+	public Id getId() {
+		return id;
+	}
+
+	public Codigo getCodigo() {
 		return codigo;
 	}
-	public Name getNombre() {
-		return nombre;
-	}
+
 	public Valor getValor() {
 		return valor;
 	}
-	public static Producto of(Name name, Valor valor2, Codigo codigo2, Id id) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public Name getNombre() {
+		return nombre;
 	}
+	
+	public static Producto of(Id id, Codigo codigo, Valor valor, Name nombre) {
+		return new Producto(id, codigo, valor, nombre);
+	}
+	
 }

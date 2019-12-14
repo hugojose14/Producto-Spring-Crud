@@ -4,10 +4,10 @@ import com.example.demo.Exceptions.ValorNoPermitidoException;
 
 public class Codigo {
 	
-	private final String value;
+	private final String codigo;
 	public Codigo(String codigo) {
 		
-		this.value = codigo;
+		this.codigo = codigo;
 		
 		if(codigo.length() >= 64 || codigo.length()<=32 ) {
 			throw new ValorNoPermitidoException();
@@ -15,8 +15,8 @@ public class Codigo {
 		
 		//colocar más 
 	}
-	public String getValue() {
-		return value;
+	public String getCodigo() {
+		return codigo;
 	}
 	
 	
