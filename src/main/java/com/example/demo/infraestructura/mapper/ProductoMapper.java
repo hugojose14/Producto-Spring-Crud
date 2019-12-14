@@ -19,4 +19,6 @@ public class ProductoMapper implements MapperApiRest<Producto, ProductoDto>{
 		return new ProductoDto(i.getId().getId(),i.getCodigo().getCodigo(),i.getNombre().getName(),i.getValor().getValor());
 	}
 	
+	
+	
 }
