@@ -27,13 +27,12 @@ public class ProductoAdapter implements ProductoService{
 	
 	@Override
 	public List<Producto> buscarTodo(){
-		return productoMapper.recibir(productoRepository.findAll());)
+		return productoMapper.recibir(productoRepository.findAll());
 	}
 
 	@Override
-	public Producto guardar(Producto producto) {
-		// TODO Auto-generated method stub
-		return null;
+	public void guardar(Producto producto) {
+		productoRepository.save(productoMapper.convertir(producto));
 	}
 
 	@Override

@@ -7,9 +7,11 @@ import com.example.demo.shared.dominio.Id;
 
 public interface ProductoService {
 
-	public List<Producto> buscarPorIds( List <Id> id);
+	public List<Producto> buscarPorIds( List <Id> ids);
 	
-	public Producto guardar(Producto producto);
+	public void guardar (Producto producto);
 	
 	public Producto buscarPorId(Id id);
+
+	public List <Producto> buscarTodo();
 }
