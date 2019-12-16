@@ -42,6 +42,7 @@ public class ExceptionsHandler {
 		
 	}
 	
+	//para el valor
 	@ExceptionHandler(ValorNoPermitidoException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCode ValorNoPermitido(ValorNoPermitidoException e) {
@@ -54,6 +55,53 @@ public class ExceptionsHandler {
 		return ec;
 		
 	}
+	
+	//para el codigo
+	@ExceptionHandler(CodigoNoPermitidoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCode CodigoNoPermitido(CodigoNoPermitidoException e) {
+		// TODO Auto-generated constructor stub
+		ErrorCode ec =new ErrorCode();
+		ec.setCodigo(this.generatedId());
+		ec.setMensaje(e.getMessage());
+		//recibe el errorCode y la exception
+		logError(ec,e );
+		return ec;
+		
+	}
+	
+	//para el id
+	@ExceptionHandler(IdNoPermitidoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCode IdNoPermitido(IdNoPermitidoException e) {
+		// TODO Auto-generated constructor stub
+		ErrorCode ec =new ErrorCode();
+		ec.setCodigo(this.generatedId());
+		ec.setMensaje(e.getMessage());
+		//recibe el errorCode y la exception
+		logError(ec,e );
+				return ec;
+				
+	}
+	
+	//para el id
+	@ExceptionHandler(NameNoPermitidoException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCode NameNoPermitido(NameNoPermitidoException e) {
+		// TODO Auto-generated constructor stub
+		ErrorCode ec =new ErrorCode();
+		ec.setCodigo(this.generatedId());
+		ec.setMensaje(e.getMessage());
+		//recibe el errorCode y la exception
+		logError(ec,e );
+			return ec;
+					
+		}	
+	
+	
+	
+	
+	
 	
 	private void logError(ErrorCode ec, Exception e) {
 		

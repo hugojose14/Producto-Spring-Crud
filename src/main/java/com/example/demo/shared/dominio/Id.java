@@ -1,6 +1,7 @@
 package com.example.demo.shared.dominio;
 
-import com.example.demo.Exceptions.ValorNoPermitidoException;
+import com.example.demo.Exceptions.IdNoPermitidoException;
+
 
 public class Id {
 	
@@ -10,7 +11,7 @@ public class Id {
 		this.id = id;
 		
 		if(id>99999999) {
-			throw new ValorNoPermitidoException();
+			throw new IdNoPermitidoException();
 		}
 	}
 	public Long getId() {

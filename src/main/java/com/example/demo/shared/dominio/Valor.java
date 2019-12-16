@@ -10,13 +10,10 @@ public class Valor {
 		
 		this.valor = valor;
 		
-		if(valor < 1.0) {
+		if(!(valor > 1.0 && valor<99999.0)) {
 			throw new ValorNoPermitidoException();
 		}
 		
-		if(valor> 99999.0) {
-			throw new ValorNoPermitidoException();
-		}
 		
 	}
 	public Double getValor() {

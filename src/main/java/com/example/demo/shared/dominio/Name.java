@@ -1,6 +1,6 @@
 package com.example.demo.shared.dominio;
 
-import com.example.demo.Exceptions.ValorNoPermitidoException;
+import com.example.demo.Exceptions.NameNoPermitidoException;
 
 public class Name {
 	
@@ -10,9 +10,12 @@ public class Name {
 		
 		this.nombre = nombre;
 		
-		if(nombre.matches("[A-Z]*")) {
-			throw new ValorNoPermitidoException();
+		if(!nombre.matches("[A-Z\\s]+")) {
+			throw new NameNoPermitidoException();
 		}
+		
+		
+		
 	}
 
 	public String getName() {

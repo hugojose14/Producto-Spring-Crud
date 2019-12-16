@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.Exceptions.RegistroNoEncontradoException;
+import com.example.demo.dominio.services.ProductoService;
 import com.example.demo.dto.ProductoDto;
+import com.example.demo.infraestructura.mapper.ProductoMapper;
 import com.example.demo.infraestructura.repository.database.ProductoRepository;
+import com.example.demo.shared.dominio.Id;
 
 import java.util.*; // import the ArrayList class
 
@@ -16,43 +19,42 @@ public class ProductoController {
 	
 	private List <ProductoDto> repositorio = new ArrayList<>();
 	
+	//Ahora es mi repositorio
 	@Autowired
-	private ProductoRepository productoRepository;
+	private ProductoService productoService;
+	
+	@Autowired  
+	private ProductoMapper productoMapper;
+	
 	
 	//Crear un producto
 	@PostMapping void crear(@RequestBody ProductoDto producto) {
-		
-		productoRepository.save(producto);
+		Random randomNumero = new Random();
+		producto.setId(randomNumero.nextLong()%100);
+		productoService.guardar(productoMapper.convertirDtoToDominio(producto));
 	
 	}
 	
 	//Obtener producto
 	@GetMapping ("/{id}") ProductoDto buscar(@PathVariable Long id) {
 		
-		return productoRepository.findById(id).orElseThrow(()-> new RegistroNoEncontradoException());
+		return productoMapper.convertirDominioToDto(productoService.buscarPorId(new Id(id)));
 	}
 	
 	//Obtener productos
 	
 	@GetMapping() 
 	List<ProductoDto> consultar(){
-		return productoRepository.findAll();
+		return productoMapper.convertirListaDominioToDto(productoService.buscarTodo());
 	}
 	
 	//eliminar producto
 	@DeleteMapping ("/{id}")
 	ProductoDto eliminar(@PathVariable Long id){ 
-		return productoRepository.findById(id).orElseThrow(()-> new RegistroNoEncontradoException());
+		return productoMapper.convertirDominioToDto(productoService.buscarPorId(new Id(id)));
 	}
 	
-	//actualizar producto
-	@PutMapping ()
-	public void actualizar( @RequestBody ProductoDto producto) {
-		
-		 productoRepository.findById(producto.getId()).orElseThrow(()-> new RegistroNoEncontradoException());
-		 productoRepository.save(producto);
 	
-	}
 	
 	
 

@@ -1,6 +1,7 @@
 package com.example.demo.shared.dominio;
 
-import com.example.demo.Exceptions.ValorNoPermitidoException;
+import com.example.demo.Exceptions.CodigoNoPermitidoException;
+
 
 public class Codigo {
 	
@@ -9,8 +10,8 @@ public class Codigo {
 		
 		this.codigo = codigo;
 		
-		if(codigo.length() >= 64 || codigo.length()<=32 ) {
-			throw new ValorNoPermitidoException();
+		if(!(codigo.length() <= 7 || codigo.length()>=10 )) {
+			throw new CodigoNoPermitidoException();
 		}
 		
 		//colocar más 

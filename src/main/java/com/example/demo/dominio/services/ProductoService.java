@@ -1,6 +1,7 @@
 package com.example.demo.dominio.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.dominio.model.Producto;
 import com.example.demo.shared.dominio.Id;
@@ -14,4 +15,6 @@ public interface ProductoService {
 	public Producto buscarPorId(Id id);
 
 	public List <Producto> buscarTodo();
+	
+
 }
