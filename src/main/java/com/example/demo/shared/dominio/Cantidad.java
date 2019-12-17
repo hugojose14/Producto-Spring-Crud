@@ -12,4 +12,10 @@ public class Cantidad {
 		if(!(cantidad>1 && cantidad<9999999) ); throw new CantidadNoPermitidaException();
 		
 	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+	
+	
 }

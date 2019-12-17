@@ -11,10 +11,6 @@ import javax.persistence.Table;
 @Table(name="items")
 public class ItemDto extends BaseEntity {
 
-
-	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 	private int cantidad;
 	private Double valor_total;
 	
@@ -23,22 +19,14 @@ public class ItemDto extends BaseEntity {
 	}
 	
 	public ItemDto(Long id, int cantidad, Double valor_total, ProductoDto producto) {
-
-		this.id = id;
+		
+		
+		this.setId(id);
 		this.cantidad = cantidad;
 		this.valor_total = valor_total;
 		this.producto = producto;
 	}
 	
-
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public int getCantidad() {
 		return cantidad;
@@ -63,17 +51,6 @@ public class ItemDto extends BaseEntity {
 	public void setProducto(ProductoDto producto) {
 		this.producto = producto;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 	@OneToOne(targetEntity =ProductoDto.class)
 	private ProductoDto producto;

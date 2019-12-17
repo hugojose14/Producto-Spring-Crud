@@ -1,20 +1,24 @@
 package com.example.demo.dto;
 
+
+
 public class ItemRestDto {
 	
 	private Long id;
 	private int cantidad;
 	private Double valor_total;
+	private ProductoRestDto producto;
 	
 	public ItemRestDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ItemRestDto(Long id, int cantidad, Double valor_total) {
+	public ItemRestDto(Long id, int cantidad, Double valor_total,ProductoRestDto producto) {
 	
 		this.id = id;
 		this.cantidad = cantidad;
 		this.valor_total = valor_total;
+		this.producto = producto;
 	}
 
 	public Long getId() {
@@ -40,5 +44,15 @@ public class ItemRestDto {
 	public void setValor_total(Double valor_total) {
 		this.valor_total = valor_total;
 	}
+
+	public ProductoRestDto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(ProductoRestDto producto) {
+		this.producto = producto;
+	}
+	
+	
 
 }

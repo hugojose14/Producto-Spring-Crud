@@ -11,4 +11,10 @@ public class valorTotal {
 		if(!(valorTotal > 1.0 && valorTotal<999999.0)); throw new ValorTotalNoPermitidoException();
 		
 	}
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+	
+	
 }
