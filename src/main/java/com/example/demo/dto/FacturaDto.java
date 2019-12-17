@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Factura extends BaseEntity{
+public class FacturaDto extends BaseEntity{
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,13 +19,12 @@ public class Factura extends BaseEntity{
 	private String nombreCliente;
 	private String Numero;
 
-	public Factura() {
-		super();
+	public FacturaDto() {
+
 		// TODO Auto-generated constructor stub
 	}
 
-	public Factura(Long id, Double valorTotal, String nombreCliente, String numero, List<ItemDto> list) {
-		super();
+	public FacturaDto(Long id, Double valorTotal, String nombreCliente, String numero, List<ItemDto> list) {
 		this.id = id;
 		this.valorTotal = valorTotal;
 		this.nombreCliente = nombreCliente;

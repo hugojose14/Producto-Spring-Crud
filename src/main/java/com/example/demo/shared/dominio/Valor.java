@@ -10,7 +10,7 @@ public class Valor {
 		
 		this.valor = valor;
 		
-		if(valor>0) {
+		if(!(valor>0)) {
 			throw new ValorNoPermitidoExceptions();
 		}
 

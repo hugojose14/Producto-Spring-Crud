@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.repository.FacturaRepository;
 import com.example.demo.repository.ItemRepository;
-import com.example.demo.dto.Factura;
+import com.example.demo.dto.FacturaDto;
 import com.example.demo.dto.ItemDto;
 import com.example.demo.dto.ProductoDto;
 import com.example.demo.infraestructura.repository.database.ProductoRepository;
@@ -28,7 +28,7 @@ public class FacturaController {
 
 	
 	@PostMapping()
-	void crearFactura(@RequestBody Factura factura) {
+	void crearFactura(@RequestBody FacturaDto factura) {
 		List<Long> codigos = new ArrayList();
 		for (ItemDto item : factura.getList()) {
 			codigos.add(item.getProducto().getId());
@@ -54,7 +54,7 @@ public class FacturaController {
 	
 	//Obtener las facturas
 	@GetMapping() 
-	List<Factura> consultar(){
+	List<FacturaDto> consultar(){
 		return facturaRepository.findAll();
 	}
 }
