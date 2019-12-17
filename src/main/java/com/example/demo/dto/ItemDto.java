@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="items")
-public class Item extends BaseEntity {
+public class ItemDto extends BaseEntity {
 
 
 	@Id
@@ -18,12 +18,12 @@ public class Item extends BaseEntity {
 	private int cantidad;
 	private Double valor_total;
 	
-	public Item() {
+	public ItemDto() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Item(Long id, int cantidad, Double valor_total, ProductoDto producto) {
-		super();
+	public ItemDto(Long id, int cantidad, Double valor_total, ProductoDto producto) {
+
 		this.id = id;
 		this.cantidad = cantidad;
 		this.valor_total = valor_total;

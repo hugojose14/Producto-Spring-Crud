@@ -24,7 +24,7 @@ public class Factura extends BaseEntity{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Factura(Long id, Double valorTotal, String nombreCliente, String numero, List<Item> list) {
+	public Factura(Long id, Double valorTotal, String nombreCliente, String numero, List<ItemDto> list) {
 		super();
 		this.id = id;
 		this.valorTotal = valorTotal;
@@ -66,11 +66,11 @@ public class Factura extends BaseEntity{
 		Numero = numero;
 	}
 
-	public List<Item> getList() {
+	public List<ItemDto> getList() {
 		return list;
 	}
 
-	public void setList(List<Item> list) {
+	public void setList(List<ItemDto> list) {
 		this.list = list;
 	}
 
@@ -78,8 +78,8 @@ public class Factura extends BaseEntity{
 
 
 
-	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
-	private List<Item> list;
+	@OneToMany(targetEntity = ItemDto.class,cascade = CascadeType.ALL)
+	private List<ItemDto> list;
 
 
 

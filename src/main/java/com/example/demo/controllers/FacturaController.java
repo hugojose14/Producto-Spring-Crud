@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.repository.FacturaRepository;
 import com.example.demo.repository.ItemRepository;
 import com.example.demo.dto.Factura;
-import com.example.demo.dto.Item;
+import com.example.demo.dto.ItemDto;
 import com.example.demo.dto.ProductoDto;
 import com.example.demo.infraestructura.repository.database.ProductoRepository;
 
@@ -30,13 +30,13 @@ public class FacturaController {
 	@PostMapping()
 	void crearFactura(@RequestBody Factura factura) {
 		List<Long> codigos = new ArrayList();
-		for (Item item : factura.getList()) {
+		for (ItemDto item : factura.getList()) {
 			codigos.add(item.getProducto().getId());
 		}
-		List<Item> guardarEnFactura = new ArrayList();
+		List<ItemDto> guardarEnFactura = new ArrayList();
 		List<ProductoDto> productos = productoRepository.findAllById(codigos);
 		Double vT = 0.0;
-		for (Item item : factura.getList()) {
+		for (ItemDto item : factura.getList()) {
 			for (ProductoDto pro : productos) {
 				if (pro.getId().equals(item.getProducto().getId())) {
 					item.setProducto(pro); 
