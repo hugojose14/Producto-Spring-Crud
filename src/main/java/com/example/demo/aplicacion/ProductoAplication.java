@@ -46,11 +46,21 @@ public class ProductoAplication {
 	}
 	
 	//eliminar producto
-	public ProductoRestDto eliminar( Long id){ 
-		return productoMapper.restConvertirDominioToDto(productoService.buscarPorId(new Id(id)));
+	public void  eliminar( Long id){ 
+		
+		productoMapper.restConvertirDominioToDto(productoService.buscarPorId(new Id(id)));
+		productoService.eliminar(new Id(id));
 	}
 	
+	//Update product
 	
+	public void actualizar(ProductoRestDto producto) {
+		if(productoService.buscarPorId(new Id(producto.getId())) == null){
+			throw new RegistroNoEncontradoException();
+		}else {
+			productoService.actualizar(productoMapper.restConvertirDtoToDominio(producto));
+		}
+	}
 	
 	
 

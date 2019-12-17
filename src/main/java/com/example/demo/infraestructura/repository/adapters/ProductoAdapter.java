@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.validation.spi.ValidationProvider;
+
 import org.aspectj.weaver.bcel.UnwovenClassFileWithThirdPartyManagedBytecode.IByteCodeProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,20 @@ public class ProductoAdapter implements ProductoService {
 		return productoMapper.convertirDtoToDominio(
 				productoRepository.findById(id.getId()).orElseThrow(() -> new RegistroNoEncontradoException()));
 	}
-
+	
+	//Eliminar
+	
+	@Override
+	public void eliminar(Id id) {
+		productoRepository.deleteById(id.getId());
+	}
+	//Actualizar
+	
+	@Override
+	public void actualizar(Producto producto) {
+		productoRepository.save(productoMapper.convertirDominioToDto(producto));
+	}
+	
+	
 	
 }

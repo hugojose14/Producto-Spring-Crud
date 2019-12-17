@@ -1,6 +1,6 @@
 package com.example.demo.shared.dominio;
 
-import com.example.demo.Exceptions.ValorNoPermitidoException;
+import com.example.demo.Exceptions.ValorNoPermitidoExceptions;;
 
 public class Valor {
 	
@@ -10,8 +10,10 @@ public class Valor {
 		
 		this.valor = valor;
 		
-		if(!(valor > 1.0 && valor<99999.0)); throw new ValorNoPermitidoException();
-		
+		if(valor>0) {
+			throw new ValorNoPermitidoExceptions();
+		}
+
 	}
 	public Double getValor() {
 		return valor;

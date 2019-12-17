@@ -41,12 +41,16 @@ public class ProductoController {
 	
 	//eliminar producto
 	@DeleteMapping ("/{id}")
-	ProductoRestDto eliminar(@PathVariable Long id){ 
-		return productoAplication.eliminar(id);
+	void eliminar(@PathVariable Long id){ 
+		productoAplication.eliminar(id);
 	}
 	
-	
-	
+	//Actualizar
+	@PutMapping ("/{id}")
+	void actualizar(@RequestBody ProductoRestDto producto) {
+		productoAplication.actualizar(producto);
+	}
+
 	
 
 }

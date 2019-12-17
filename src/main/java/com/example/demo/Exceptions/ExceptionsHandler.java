@@ -43,9 +43,9 @@ public class ExceptionsHandler {
 	}
 
 	// para el valor
-	@ExceptionHandler(ValorNoPermitidoException.class)
+	@ExceptionHandler(ValorNoPermitidoExceptions.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ErrorCode ValorNoPermitido(ValorNoPermitidoException e) {
+	public ErrorCode ValorNoPermitido(ValorNoPermitidoExceptions e) {
 		// TODO Auto-generated constructor stub
 		ErrorCode ec = new ErrorCode();
 		ec.setCodigo(this.generatedId());
