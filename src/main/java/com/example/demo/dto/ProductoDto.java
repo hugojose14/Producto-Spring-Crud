@@ -23,7 +23,7 @@ public class ProductoDto extends BaseEntity {
 	}
 	
 	public ProductoDto(Long id, String codigo, String nombre, Double valor) {
-		super();
+	
 		this.id = id;
 		this.codigo = codigo;
 		this.nombre = nombre;

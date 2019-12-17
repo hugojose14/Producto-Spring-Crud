@@ -3,12 +3,9 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.Exceptions.RegistroNoEncontradoException;
-import com.example.demo.dominio.services.ProductoService;
-import com.example.demo.dto.ProductoDto;
-import com.example.demo.infraestructura.mapper.ProductoMapper;
-import com.example.demo.infraestructura.repository.database.ProductoRepository;
-import com.example.demo.shared.dominio.Id;
+import com.example.demo.aplicacion.ProductoAplication;
+import com.example.demo.dto.ProductoRestDto;
+
 
 import java.util.*; // import the ArrayList class
 
@@ -17,41 +14,35 @@ import java.util.*; // import the ArrayList class
 @RequestMapping("/producto")
 public class ProductoController {
 	
-	private List <ProductoDto> repositorio = new ArrayList<>();
+	private List <ProductoRestDto> repositorio = new ArrayList<>();
 	
-	//Ahora es mi repositorio
 	@Autowired
-	private ProductoService productoService;
-	
-	@Autowired  
-	private ProductoMapper productoMapper;
-	
+	private ProductoAplication productoAplication;
+		
 	
 	//Crear un producto
-	@PostMapping void crear(@RequestBody ProductoDto producto) {
-		Random randomNumero = new Random();
-		producto.setId(randomNumero.nextLong()%100);
-		productoService.guardar(productoMapper.convertirDtoToDominio(producto));
+	@PostMapping void crear(@RequestBody ProductoRestDto producto) {
+		productoAplication.crear(producto);
 	
 	}
 	
 	//Obtener producto
-	@GetMapping ("/{id}") ProductoDto buscar(@PathVariable Long id) {
+	@GetMapping ("/{id}") ProductoRestDto buscar(@PathVariable Long id) {
 		
-		return productoMapper.convertirDominioToDto(productoService.buscarPorId(new Id(id)));
+		return productoAplication.buscar(id);
 	}
 	
 	//Obtener productos
 	
 	@GetMapping() 
-	List<ProductoDto> consultar(){
-		return productoMapper.convertirListaDominioToDto(productoService.buscarTodo());
+	List<ProductoRestDto> consultar(){
+		return productoAplication.consultar();
 	}
 	
 	//eliminar producto
 	@DeleteMapping ("/{id}")
-	ProductoDto eliminar(@PathVariable Long id){ 
-		return productoMapper.convertirDominioToDto(productoService.buscarPorId(new Id(id)));
+	ProductoRestDto eliminar(@PathVariable Long id){ 
+		return productoAplication.eliminar(id);
 	}
 	
 	

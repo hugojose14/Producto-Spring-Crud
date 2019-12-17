@@ -13,7 +13,7 @@ import com.example.demo.shared.infraestructure.mapper.MapperApiRest;
 import com.example.demo.shared.infraestructure.mapper.MapperRepository;
 
 @Component
-public class ProductoMapper implements MapperRepository<Producto, ProductoDto>, MapperApiRest<ProductoRestDto, Producto>{
+public class ProductoMapper implements MapperRepository<Producto, ProductoDto>, MapperApiRest<Producto, ProductoRestDto>{
 	@Override
 	public Producto convertirDtoToDominio(ProductoDto o) { 
 		return Producto.of(new Id(o.getId()),new Codigo(o.getCodigo()),new Valor(o.getValor()),new Name(o.getNombre()));
@@ -24,15 +24,14 @@ public class ProductoMapper implements MapperRepository<Producto, ProductoDto>, 
 		return new ProductoDto(i.getId().getId(),i.getCodigo().getCodigo(),i.getNombre().getName(),i.getValor().getValor());
 	}
 	@Override
-	public ProductoRestDto restConvertirDtoToDominio(Producto o) {
+	public ProductoRestDto restConvertirDominioToDto (Producto o) {
 		// TODO Auto-generated method stub
-		//return new ProductoRestDto(o.getId(), o.getCodigo().getCodigo(), o.getNombre().getName(), o.getValor().getValor());
-		return null;
+		return new ProductoRestDto(o.getId().getId(), o.getCodigo().getCodigo(), o.getNombre().getName(), o.getValor().getValor());
+		
 	}
 	@Override
-	public Producto restConvertirDominioToDto(ProductoRestDto i) {
-		// TODO Auto-generated method stub
-		return null;
+	public Producto restConvertirDtoToDominio (ProductoRestDto i) {
+		return Producto.of(new Id(i.getId()),new Codigo(i.getCodigo()), new Valor(i.getValor()),new Name(i.getNombre()));
 	}
 	
 	
