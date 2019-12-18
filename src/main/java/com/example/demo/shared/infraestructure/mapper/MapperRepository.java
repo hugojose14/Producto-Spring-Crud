@@ -10,7 +10,6 @@ public interface MapperRepository <I, O>{
 	public default List<O> convertirListaDominioToDto(List<I> instancias){
 		//dato de entrada (i)
 		return instancias.stream().map(i ->
-		
 		//dato de salida
 		convertirDominioToDto(i)
 		).collect(Collectors.toList());

@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.demo.dto.ErrorCode;
-
 import java.util.UUID;
 import java.util.logging.*;
 
@@ -16,6 +14,7 @@ public class ExceptionsHandler {
 	// obtener el id o nombre especifico del error (Logger)
 	private static final Logger LOG = Logger.getLogger(ExceptionHandler.class.getName());
 
+	/*
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	public ErrorCode handleException(Exception e) {
@@ -27,7 +26,7 @@ public class ExceptionsHandler {
 		logError(ec, e);
 		return ec;
 
-	}
+	}*/
 
 	@ExceptionHandler(RegistroNoEncontradoException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
@@ -120,6 +119,22 @@ public class ExceptionsHandler {
 	@ExceptionHandler(ValorTotalNoPermitidoException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ErrorCode ValorTotalNoPermitido(ValorTotalNoPermitidoException e) {
+		// TODO Auto-generated constructor stub
+		ErrorCode ec = new ErrorCode();
+		ec.setCodigo(this.generatedId());
+		ec.setMensaje(e.getMessage());
+		// recibe el errorCode y la exception
+		logError(ec, e);
+		return ec;
+
+	}
+
+	// Para la Factura
+	
+	//Nombre de cliente
+	@ExceptionHandler(NombreClienteNoPermitido.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public ErrorCode nombreClienteNoPermitido(NombreClienteNoPermitido e) {
 		// TODO Auto-generated constructor stub
 		ErrorCode ec = new ErrorCode();
 		ec.setCodigo(this.generatedId());

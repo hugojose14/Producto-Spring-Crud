@@ -8,7 +8,7 @@ import com.example.demo.dto.ProductoDto;
 
 @Repository
 //<Clase, tipo(codigo)>
-public interface FacturaRepository extends JpaRepository <FacturaDto,String>{
+public interface FacturaRepository extends JpaRepository <FacturaDto,Long>{
 	
 	
 	

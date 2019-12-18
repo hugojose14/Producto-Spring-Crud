@@ -22,24 +22,17 @@ public class Item {
 		return id;
 	}
 
-
-
 	public Cantidad getCantidad() {
 		return cantidad;
 	}
-
-
 
 	public valorTotal getValor_total() {
 		return valor_total;
 	}
 
-
-
 	public Producto getProducto() {
 		return producto;
 	}
-
 
 
 	public static Item of(Id id, Cantidad cantidad, valorTotal valor_total, Producto producto  ) {

@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-
-
 public class ItemRestDto {
 	
 	private Long id;

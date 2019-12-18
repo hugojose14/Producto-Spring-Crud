@@ -13,9 +13,6 @@ public class Name {
 		if(!nombre.matches("[A-Z\\s]+")) {
 			throw new NameNoPermitidoException();
 		}
-		
-		
-		
 	}
 
 	public String getName() {

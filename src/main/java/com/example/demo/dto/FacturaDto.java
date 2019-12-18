@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.example.demo.infraestructura.dto.BaseEntity;
+
 @Entity
 public class FacturaDto extends BaseEntity{
 	
@@ -17,18 +19,20 @@ public class FacturaDto extends BaseEntity{
 	private Long id;
 	private Double valorTotal;
 	private String nombreCliente;
-	private String Numero;
+	
+	@OneToMany(targetEntity = ItemDto.class,cascade = CascadeType.ALL)
+	private List<ItemDto> list;
 
 	public FacturaDto() {
 
 		// TODO Auto-generated constructor stub
 	}
 
-	public FacturaDto(Long id, Double valorTotal, String nombreCliente, String numero, List<ItemDto> list) {
+	public FacturaDto(Long id, Double valorTotal, String nombreCliente, List<ItemDto> list) {
 		this.id = id;
 		this.valorTotal = valorTotal;
 		this.nombreCliente = nombreCliente;
-		Numero = numero;
+		//Numero = numero;
 		this.list = list;
 	}
 	
@@ -57,13 +61,13 @@ public class FacturaDto extends BaseEntity{
 		this.nombreCliente = nombreCliente;
 	}
 
-	public String getNumero() {
+	/*public String getNumero() {
 		return Numero;
 	}
 
 	public void setNumero(String numero) {
 		Numero = numero;
-	}
+	} */
 
 	public List<ItemDto> getList() {
 		return list;
@@ -74,18 +78,4 @@ public class FacturaDto extends BaseEntity{
 	}
 
 
-
-
-
-	@OneToMany(targetEntity = ItemDto.class,cascade = CascadeType.ALL)
-	private List<ItemDto> list;
-
-
-
-	
-
-	
-	
-	
-	
 }

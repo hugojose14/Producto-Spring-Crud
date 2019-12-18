@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.example.demo.infraestructura.dto.BaseEntity;
+
 @Entity
 @Table(name="productos")
 public class ProductoDto extends BaseEntity {
